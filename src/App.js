@@ -35,15 +35,8 @@ class App extends Component {
     const URI = "https://query.yahooapis.com/v1/public/yql?q=";
     const YQLQuery = `select%20${query}%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${place}%22)%20and%20u%3D%22${units}%22&format=json`;
     //make the call
-    const api_call = await fetch(`${URI}${YQLQuery}`, {
-      headers: {
-        //// Authorization not really needed right now, 2000 unauthorized calls a day OK
-        // Authorization: "Bearer",
-        // "consumer key":
-        //   "dj0yJmk9a2x6QXZISFBhRmNrJmQ9WVdrOWFURldlRXB3TjJzbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jMQ--",
-        // "consumr secret": "9e472555846e303dd59bd0eb4470234c02ae2d0b"
-      }
-    });
+    // Authorization not really needed right now, 2000 unauthorized calls a day OK
+    const api_call = await fetch(`${URI}${YQLQuery}`);
     let response;
     try {
       response = await api_call.json();
