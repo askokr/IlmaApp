@@ -64,6 +64,15 @@ class APICaller extends Component {
     console.log(link);
     console.log(windString);
     console.log(forecast);
+
+    //authenticate
+    const client_id =
+      "dj0yJmk9a2x6QXZISFBhRmNrJmQ9WVdrOWFURldlRXB3TjJzbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jMQ--";
+    const response_type = "id_token";
+    const redirect_uri = "https://stupefied-bose-586d60.netlify.com/";
+    const endpoint = `https://api.login.yahoo.com/oauth2/request_auth?client_id=${client_id}response_type=${response_type}&${redirect_uri}`;
+    const auth_call = await fetch(endpoint);
+    console.log(auth_call);
   };
 
   render() {
