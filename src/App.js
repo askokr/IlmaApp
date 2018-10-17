@@ -33,26 +33,36 @@ class App extends Component {
           positon="top-right"
           bgColor="blue"
           size={95}
-          ariaLabel="Check my project"
+          ariaLabel="Check my code"
         />
-        <div />
-        <div className="container">
-          <APICall
-            onPlaceInput={this.handlePlaceInput}
-            place={this.state.place}
-          />
-        </div>
-
         <div>
-          <a href={this.state.link} target="_blank" rel="noopener noreferrer">
-            {" "}
-            <img
-              src="https://poweredby.yahoo.com/purple.png"
-              width="134"
-              height="29"
-              alt="Weather info from Yahoo!"
-            />{" "}
-          </a>
+          <div id="clouds">
+            <div class="cloud x1" />
+            <div class="cloud x2" />
+            <div class="cloud x3" />
+            <div class="cloud x4" />
+          </div>
+          <div className="container search-container">
+            <APICall
+              onPlaceInput={this.handlePlaceInput}
+              place={this.state.place}
+            />
+            <div className="d-flex justify-content-center m-4">
+              <a
+                href={this.state.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                <img
+                  src="https://poweredby.yahoo.com/purple.png"
+                  width="134"
+                  height="29"
+                  alt="Weather info from Yahoo!"
+                />{" "}
+              </a>
+            </div>
+          </div>
         </div>
       </React.Fragment>
     );
