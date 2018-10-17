@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import YahooLink from "./yahooLink";
+import MediaQuery from "react-responsive";
 
 class Weather extends Component {
   // find wind direction name
@@ -81,7 +82,24 @@ class Weather extends Component {
 
         return (
           <React.Fragment>
-            <div className="d-flex flex-row justify-content-center">
+            <MediaQuery minDeviceWidth={1224}>
+              <div className="d-flex flex-row justify-content-center">
+                <div className="flex-column d-flex justify-content-center">
+                  <div>
+                    <span style={{ fontSize: "5em" }}>{tempString}</span>
+                  </div>{" "}
+                  <div className=" align-self-center">
+                    <span style={{ fontSize: "2em" }}>{windString}</span>
+                  </div>
+                </div>
+                <div>
+                  <img src={imagelink} alt={text} />
+                </div>
+                <div />
+              </div>
+              <YahooLink link={weatherLink} />
+            </MediaQuery>
+            <MediaQuery maxDeviceWidth={1224}>
               <div className="flex-column d-flex justify-content-center">
                 <div>
                   <span style={{ fontSize: "5em" }}>{tempString}</span>
@@ -89,17 +107,13 @@ class Weather extends Component {
                 <div className=" align-self-center">
                   <span style={{ fontSize: "2em" }}>{windString}</span>
                 </div>
-              </div>
-              <div>
                 <div>
-                  <div>
-                    <img src={imagelink} alt={text} />
-                  </div>
+                  <img src={imagelink} alt={text} />
                 </div>
               </div>
               <div />
-            </div>
-            <YahooLink link={weatherLink} />
+              <YahooLink link={weatherLink} />
+            </MediaQuery>
           </React.Fragment>
         );
       } catch (e) {

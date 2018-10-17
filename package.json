@@ -10,6 +10,7 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-gh-corner": "^1.1.2",
+    "react-responsive": "^5.0.0",
     "react-scripts": "2.0.5",
     "styled-components": "^4.0.0",
     "woeid": "^1.0.5"
