@@ -21,6 +21,25 @@
   text-align: center;
 }
 
+.results {
+  color: navy;
+}
+.results-city {
+  margin-left: 5%;
+  font-size: 4em;
+}
+.results-temperature {
+  font-size: 5em;
+}
+.results-wind {
+  font-size: 2em;
+}
+
+.results-error {
+  color: red;
+  font-size: 2em;
+}
+
 /* cloudy background */
 * {
   margin: 0;

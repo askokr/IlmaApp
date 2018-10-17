@@ -29,7 +29,7 @@ class App extends Component {
 
   handleAPICall = async e => {
     //get parts for call
-    const place = this.state.place; //get place string from input
+    let place = this.state.place; //get place string from input
     const query = "*"; //get all weather data
     const units = "c"; //use SI units
     const URI = "https://query.yahooapis.com/v1/public/yql?q=";
@@ -44,6 +44,8 @@ class App extends Component {
       console.log(e);
     }
     this.setState({ response });
+    place = "";
+    this.setState({ place });
   };
 
   render() {
@@ -56,7 +58,7 @@ class App extends Component {
           href="https://github.com/askokr/IlmaApp.git"
           positon="top-right"
           bgColor="blue"
-          size={95}
+          size="95px"
           ariaLabel="Check my code"
         />
         <div>

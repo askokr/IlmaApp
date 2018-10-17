@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import YahooLink from "./yahooLink";
 import MediaQuery from "react-responsive";
-
+import ErrorMessage from "./errorMessage";
+import WeatherDisplayMob from "./mob/weatherDisplay";
+import WeatherDisplayWeb from "./web/weatherDisplay";
+import YahooLink from "./yahooLink";
 class Weather extends Component {
   // find wind direction name
   directionName(degrees) {
@@ -55,18 +57,13 @@ class Weather extends Component {
   composeElements = () => {
     const { response } = this.props;
     if (response !== "") {
-      //make string of wind result
       try {
+        //make string of wind result
         const { wind } = response.query.results.channel;
         const direction = parseInt(wind.direction);
         const speedMS = Math.round(parseInt(wind.speed) / 3.6);
         const directionName = this.directionName(direction);
         const windString = directionName + " tuul, " + speedMS + " m/s.";
-
-        //get link to result
-        const { link } = response.query.results.channel.item;
-        const linkParts = link.split("*");
-        const weatherLink = linkParts[1];
 
         //get temperature
         const { condition } = response.query.results.channel.item;
@@ -75,57 +72,46 @@ class Weather extends Component {
 
         //get condition image
         const { code, text } = condition;
-
         const imagelink = `https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${code}d.png`;
         // const { description } = response.query.results.channel.item;
         // const imagelink = description.split('"')[1];
 
+        //get link to result
+        const { link } = response.query.results.channel.item;
+        const linkParts = link.split("*");
+        const weatherLink = linkParts[1];
+
+        //get place name
+        const { city } = response.query.results.channel.location;
+
         return (
           <React.Fragment>
             <MediaQuery minDeviceWidth={1224}>
-              <div className="d-flex flex-row justify-content-center">
-                <div className="flex-column d-flex justify-content-center">
-                  <div>
-                    <span style={{ fontSize: "5em" }}>{tempString}</span>
-                  </div>{" "}
-                  <div className=" align-self-center">
-                    <span style={{ fontSize: "2em" }}>{windString}</span>
-                  </div>
-                </div>
-                <div>
-                  <img src={imagelink} alt={text} />
-                </div>
-                <div />
-              </div>
-              <YahooLink link={weatherLink} />
+              <WeatherDisplayWeb
+                city={city}
+                tempString={tempString}
+                text={text}
+                windString={windString}
+                imagelink={imagelink}
+                weatherLink={weatherLink}
+              />
             </MediaQuery>
             <MediaQuery maxDeviceWidth={1224}>
-              <div className="flex-column d-flex justify-content-center">
-                <div>
-                  <span style={{ fontSize: "5em" }}>{tempString}</span>
-                </div>{" "}
-                <div className=" align-self-center">
-                  <span style={{ fontSize: "2em" }}>{windString}</span>
-                </div>
-                <div>
-                  <img src={imagelink} alt={text} />
-                </div>
-              </div>
-              <div />
-              <YahooLink link={weatherLink} />
+              <WeatherDisplayMob
+                city={city}
+                tempString={tempString}
+                text={text}
+                windString={windString}
+                imagelink={imagelink}
+                weatherLink={weatherLink}
+              />
             </MediaQuery>
           </React.Fragment>
         );
       } catch (e) {
         return (
           <React.Fragment>
-            <div className="d-flex flex-row justify-content-center">
-              <span style={{ fontSize: "2em" }}>
-                Miskit läks valesti, proovi uuesti
-              </span>
-              <div />
-            </div>
-            <YahooLink link="https://www.yahoo.com/?ilc=401" />
+            <ErrorMessage />
           </React.Fragment>
         );
       }
