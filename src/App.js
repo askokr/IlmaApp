@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import APICall from "./components/apiCaller";
+import Clouds from "./components/clouds";
 import GHCorner from "react-gh-corner";
+import Input from "./components/input";
+import Weather from "./components/weatherComponent";
 import "./App.css";
-
 import "bootstrap/dist/css/bootstrap.css";
 
 class App extends Component {
   state = {
     place: "",
-    link: "https://www.yahoo.com/?ilc=401"
+    response: ""
   };
   handlePlaceInput = e => {
     const place = e.target.value;
@@ -17,8 +18,39 @@ class App extends Component {
   //
   handleEnter = e => {
     if (e.key === "Enter") {
-      this.handleWeather();
+      this.handleAPICall();
     }
+  };
+
+  handleNewLink = e => {
+    const link = e;
+    this.setState({ link });
+  };
+
+  handleAPICall = async e => {
+    //get parts for call
+    const place = this.state.place; //get place string from input
+    const query = "*"; //get all weather data
+    const units = "c"; //use SI units
+    const URI = "https://query.yahooapis.com/v1/public/yql?q=";
+    const YQLQuery = `select%20${query}%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${place}%22)%20and%20u%3D%22${units}%22&format=json`;
+    //make the call
+    const api_call = await fetch(`${URI}${YQLQuery}`, {
+      headers: {
+        //// Authorization not really needed right now, 2000 unauthorized calls a day OK
+        // Authorization: "Bearer",
+        // "consumer key":
+        //   "dj0yJmk9a2x6QXZISFBhRmNrJmQ9WVdrOWFURldlRXB3TjJzbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1jMQ--",
+        // "consumr secret": "9e472555846e303dd59bd0eb4470234c02ae2d0b"
+      }
+    });
+    let response;
+    try {
+      response = await api_call.json();
+    } catch (e) {
+      console.log(e);
+    }
+    this.setState({ response });
   };
 
   render() {
@@ -27,7 +59,6 @@ class App extends Component {
         <header className="App-header">
           <h1>IlmaÄpp</h1>
         </header>
-        <div />
         <GHCorner
           href="https://github.com/askokr/IlmaApp.git"
           positon="top-right"
@@ -36,32 +67,15 @@ class App extends Component {
           ariaLabel="Check my code"
         />
         <div>
-          <div id="clouds">
-            <div class="cloud x1" />
-            <div class="cloud x2" />
-            <div class="cloud x3" />
-            <div class="cloud x4" />
-          </div>
+          <Clouds />
           <div className="container search-container">
-            <APICall
+            <Input
               onPlaceInput={this.handlePlaceInput}
               place={this.state.place}
+              onEnter={this.handleEnter}
+              onSearch={this.handleAPICall}
             />
-            <div className="d-flex justify-content-center m-4">
-              <a
-                href={this.state.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {" "}
-                <img
-                  src="https://poweredby.yahoo.com/purple.png"
-                  width="134"
-                  height="29"
-                  alt="Weather info from Yahoo!"
-                />{" "}
-              </a>
-            </div>
+            <Weather response={this.state.response} />
           </div>
         </div>
       </React.Fragment>

@@ -17,6 +17,9 @@
   position: relative;
   bottom: 400px;
 }
+.search-text {
+  text-align: center;
+}
 
 /* cloudy background */
 * {
