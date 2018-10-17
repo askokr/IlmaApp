@@ -4,6 +4,7 @@ import ErrorMessage from "./errorMessage";
 import WeatherDisplayMob from "./mob/weatherDisplay";
 import WeatherDisplayWeb from "./web/weatherDisplay";
 import YahooLink from "./yahooLink";
+
 class Weather extends Component {
   // find wind direction name
   directionName(degrees) {
@@ -37,23 +38,7 @@ class Weather extends Component {
     return closestDegrees;
   }
 
-  correctTimeString(time) {
-    const timeSplitAtSpace = time.split(" ");
-    const timeSpliAtColon = timeSplitAtSpace[0].split(":");
-    let timeCorrected;
-    if (timeSpliAtColon[1].length === 1) {
-      timeCorrected =
-        timeSpliAtColon[0] +
-        ":0" +
-        timeSpliAtColon[1] +
-        " " +
-        timeSplitAtSpace[1];
-    } else {
-      timeCorrected = time;
-    }
-    return timeCorrected;
-  }
-
+  //compose elements for display
   composeElements = () => {
     const { response } = this.props;
     if (response !== "") {
@@ -65,23 +50,23 @@ class Weather extends Component {
         const directionName = this.directionName(direction);
         const windString = directionName + " tuul, " + speedMS + " m/s.";
 
-        //get temperature
+        //make string of  temperature
         const { condition } = response.query.results.channel.item;
         const temp = condition.temp;
         const tempString = temp + " °C";
 
-        //get condition image
+        //get condition related image and text
         const { code, text } = condition;
         const imagelink = `https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${code}d.png`;
         // const { description } = response.query.results.channel.item;
         // const imagelink = description.split('"')[1];
 
-        //get link to result
+        //get link to Yahoo Weather
         const { link } = response.query.results.channel.item;
         const linkParts = link.split("*");
         const weatherLink = linkParts[1];
 
-        //get place name
+        //get city name
         const { city } = response.query.results.channel.location;
 
         return (

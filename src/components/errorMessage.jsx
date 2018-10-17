@@ -1,7 +1,7 @@
 import React from "react";
 import YahooLink from "./yahooLink";
 
-const WeatherDisplayMob = ({}) => {
+const WeatherDisplayMob = () => {
   return (
     <React.Fragment>
       <div className="d-flex flex-row justify-content-center">
