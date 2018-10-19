@@ -54,6 +54,7 @@ class App extends Component {
         `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${long}`
       );
       astronomyResponse = await astronomicalAPICall.json();
+      console.log(astronomyResponse);
       const { sunrise, sunset } = astronomyResponse.results;
       this.setState({ sunrise, sunset });
     } catch (e) {
@@ -64,16 +65,18 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <header className="App-header">
-          <h1>IlmaÄpp</h1>
-        </header>
-        <GHCorner
-          href="https://github.com/askokr/IlmaApp.git"
-          positon="top-right"
-          bgColor="blue"
-          size="95px"
-          ariaLabel="Check my code"
-        />
+        <div>
+          <header className="App-header">
+            <h1>IlmaÄpp</h1>
+          </header>
+          <GHCorner
+            href="https://github.com/askokr/IlmaApp.git"
+            positon="top-right"
+            bgColor="blue"
+            size="6.05em"
+            ariaLabel="Check my code"
+          />
+        </div>
         <div>
           <Clouds />
           <div className="container search-container">

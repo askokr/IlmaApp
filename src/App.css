@@ -1,6 +1,6 @@
 .App-header {
   background-color: #282c34;
-  min-height: 10vh;
+  min-height: 11vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,6 +16,7 @@
   border-radius: 20px;
   position: relative;
   bottom: 400px;
+  margin-bottom: -400px;
 }
 .search-text {
   text-align: center;
@@ -102,6 +103,7 @@ body {
 
 /*Time to animate*/
 .x1 {
+  animation: moveclouds 15s linear infinite;
   -webkit-animation: moveclouds 15s linear infinite;
   -moz-animation: moveclouds 15s linear infinite;
   -o-animation: moveclouds 15s linear infinite;
@@ -118,6 +120,7 @@ body {
 
   /*Speed will also be proportional to the size and opacity*/
   /*More the speed. Less the time in 's' = seconds*/
+  animation: moveclouds 25s linear infinite;
   -webkit-animation: moveclouds 25s linear infinite;
   -moz-animation: moveclouds 25s linear infinite;
   -o-animation: moveclouds 25s linear infinite;
@@ -132,6 +135,7 @@ body {
   transform: scale(0.8);
   opacity: 0.8; /*opacity proportional to the size*/
 
+  animation: moveclouds 20s linear infinite;
   -webkit-animation: moveclouds 20s linear infinite;
   -moz-animation: moveclouds 20s linear infinite;
   -o-animation: moveclouds 20s linear infinite;
@@ -146,11 +150,20 @@ body {
   transform: scale(0.75);
   opacity: 0.75; /*opacity proportional to the size*/
 
+  animation: moveclouds 18s linear infinite;
   -webkit-animation: moveclouds 18s linear infinite;
   -moz-animation: moveclouds 18s linear infinite;
   -o-animation: moveclouds 18s linear infinite;
 }
 
+@keyframes moveclouds {
+  0% {
+    margin-left: 1000px;
+  }
+  100% {
+    margin-left: -1000px;
+  }
+}
 @-webkit-keyframes moveclouds {
   0% {
     margin-left: 1000px;

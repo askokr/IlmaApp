@@ -34,10 +34,10 @@ class Weather extends Component {
         const mm = today.getMonth() + 1; //January is 0!
         const yyyy = today.getFullYear();
         today = yyyy + "/" + mm + "/" + dd;
-
-        const sunriseTime = +new Date(today + " " + this.props.sunrise);
-        const sunsetTime = +new Date(today + " " + this.props.sunset);
-
+        const sunriseTime = +new Date(
+          today + " " + this.props.sunrise + " UTC"
+        );
+        const sunsetTime = +new Date(today + " " + this.props.sunset + " UTC");
         if (now <= sunsetTime && now >= sunriseTime) {
           dayOrNight = "d";
         } else {
