@@ -4,40 +4,9 @@ import ErrorMessage from "./errorMessage";
 import WeatherDisplayMob from "./mob/weatherDisplay";
 import WeatherDisplayWeb from "./web/weatherDisplay";
 import YahooLink from "./yahooLink";
+import DirectionName from "./functions/directionName";
 
 class Weather extends Component {
-  // find wind direction name
-  directionName(degrees) {
-    const directionNames = [
-      "Põhja",
-      "Kirde",
-      "Ida",
-      "Kagu",
-      "Lõuna",
-      "Edela",
-      "Lääne",
-      "Loode"
-    ];
-    const directionName = directionNames[this.findClosestDegrees(degrees)];
-    return directionName;
-  }
-  //find wind direction
-  findClosestDegrees(number) {
-    const directionDegrees = [0, 45, 90, 135, 180, 225, 270, 315];
-    let closest = number;
-    let closestDegrees = 0;
-
-    for (let i = 0; i < directionDegrees.length; i++) {
-      let currentDistance = Math.abs(number - directionDegrees[i]);
-
-      if (currentDistance < closest) {
-        closestDegrees = i;
-        closest = currentDistance;
-      }
-    }
-    return closestDegrees;
-  }
-
   //compose elements for display
   composeElements = () => {
     const { response } = this.props;
@@ -47,7 +16,7 @@ class Weather extends Component {
         const { wind } = response.query.results.channel;
         const direction = parseInt(wind.direction);
         const speedMS = Math.round(parseInt(wind.speed) / 3.6);
-        const directionName = this.directionName(direction);
+        const directionName = DirectionName(direction);
         const windString = directionName + " tuul, " + speedMS + " m/s.";
 
         //make string of  temperature
@@ -57,7 +26,24 @@ class Weather extends Component {
 
         //get condition related image and text
         const { code, text } = condition;
-        const imagelink = `https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${code}d.png`;
+        //is it day or night
+        let dayOrNight;
+        let today = new Date();
+        const now = +today;
+        const dd = today.getDate();
+        const mm = today.getMonth() + 1; //January is 0!
+        const yyyy = today.getFullYear();
+        today = yyyy + "/" + mm + "/" + dd;
+
+        const sunriseTime = +new Date(today + " " + this.props.sunrise);
+        const sunsetTime = +new Date(today + " " + this.props.sunset);
+
+        if (now <= sunsetTime && now >= sunriseTime) {
+          dayOrNight = "d";
+        } else {
+          dayOrNight = "n";
+        }
+        const imagelink = `https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/${code}${dayOrNight}.png`;
         // const { description } = response.query.results.channel.item;
         // const imagelink = description.split('"')[1];
 

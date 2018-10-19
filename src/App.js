@@ -9,7 +9,9 @@ import "bootstrap/dist/css/bootstrap.css";
 class App extends Component {
   state = {
     place: "",
-    response: ""
+    response: "",
+    sunrise: "",
+    sunset: ""
   };
   handlePlaceInput = e => {
     const place = e.target.value;
@@ -37,7 +39,7 @@ class App extends Component {
     //make the call
     // Authorization not really needed right now, 2000 unauthorized calls a day OK
     const api_call = await fetch(`${URI}${YQLQuery}`);
-    let response;
+    let response, astronomyResponse;
     try {
       response = await api_call.json();
     } catch (e) {
@@ -46,6 +48,17 @@ class App extends Component {
     this.setState({ response });
     place = "";
     this.setState({ place });
+    try {
+      const { lat, long } = response.query.results.channel.item;
+      const astronomicalAPICall = await fetch(
+        `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${long}`
+      );
+      astronomyResponse = await astronomicalAPICall.json();
+      const { sunrise, sunset } = astronomyResponse.results;
+      this.setState({ sunrise, sunset });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   render() {
@@ -70,7 +83,11 @@ class App extends Component {
               onEnter={this.handleEnter}
               onSearch={this.handleAPICall}
             />
-            <Weather response={this.state.response} />
+            <Weather
+              response={this.state.response}
+              sunrise={this.state.sunrise}
+              sunset={this.state.sunset}
+            />
           </div>
         </div>
       </React.Fragment>
