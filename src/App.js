@@ -15,10 +15,6 @@ class App extends Component {
     searches: 0
   };
 
-  componentDidUpdate() {
-    console.log("app.js did update");
-  }
-
   handlePlaceInput = e => {
     const place = e.target.value;
     this.setState({ place });

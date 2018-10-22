@@ -60,7 +60,7 @@ body {
   background: -moz-linear-gradient(top, #c9dbe9 0%, #fff 100%);
 }
 
-/*Time to finalise the cloud shape*/
+/*Cloud shape*/
 .cloud {
   width: 200px;
   height: 60px;
@@ -101,7 +101,7 @@ body {
   right: 15px;
 }
 
-/*Time to animate*/
+/*Animation*/
 .x1 {
   animation: moveclouds 15s linear infinite;
   -webkit-animation: moveclouds 15s linear infinite;
