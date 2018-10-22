@@ -70,7 +70,7 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <React.Fragment style={{ overflow: "hidden" }}>
         <div>
           <header className="App-header">
             <h1>IlmaÄpp</h1>
