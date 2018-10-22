@@ -41,10 +41,7 @@
   color: red;
   font-size: 2em;
 }
-.vertical {
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-}
+
 @media only screen and (max-width: 800px) {
   .search-container {
     text-align: center;
@@ -64,7 +61,7 @@
     font-size: 1.2em;
   }
   .results-image {
-    width: 10%;
+    width: 50%;
   }
 }
 
