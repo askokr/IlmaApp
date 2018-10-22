@@ -76,7 +76,7 @@ class App extends Component {
             <h1>IlmaÄpp</h1>
           </header>
         </div>
-        <div>
+        <div style={{ overflow: "hidden" }}>
           <Clouds />
           <div className="container search-container">
             <Input
