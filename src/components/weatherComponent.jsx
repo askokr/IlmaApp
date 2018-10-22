@@ -30,7 +30,7 @@ class Weather extends Component {
         //get condition related image and text
         const { code, text } = condition;
         //is it day or night
-        let dayOrNight;
+        let dayOrNight = "d";
         let today = new Date();
         const now = +today;
         const dd = today.getDate();

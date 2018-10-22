@@ -42,29 +42,27 @@ class App extends Component {
       const YQLQuery = `select%20${query}%20from%20weather.forecast%20where%20woeid%20in%20(select%20woeid%20from%20geo.places(1)%20where%20text%3D%22${place}%22)%20and%20u%3D%22${units}%22&format=json`;
       //make the call
       const api_call = await fetch(`${URI}${YQLQuery}`);
-
       try {
         response = await api_call.json();
+        try {
+          const { lat, long } = response.query.results.channel.item;
+          const astronomicalAPICall = await fetch(
+            `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${long}`
+          );
+          astronomyResponse = await astronomicalAPICall.json();
+          const { sunrise, sunset } = astronomyResponse.results;
+          this.setState({ sunrise, sunset });
+          this.setState({ response });
+          place = "";
+          this.setState({ place });
+        } catch (e) {
+          // console.log(e);
+        }
       } catch (e) {
         // console.log(e);
       }
-      this.setState({ response });
-      place = "";
-      this.setState({ place });
       let searches = ++this.state.searches;
       this.setState({ searches });
-      // find out if the sun has risen/set
-      try {
-        const { lat, long } = response.query.results.channel.item;
-        const astronomicalAPICall = await fetch(
-          `https://api.sunrise-sunset.org/json?lat=${lat}&lng=${long}`
-        );
-        astronomyResponse = await astronomicalAPICall.json();
-        const { sunrise, sunset } = astronomyResponse.results;
-        this.setState({ sunrise, sunset });
-      } catch (e) {
-        // console.log(e);
-      }
     }
   };
 
