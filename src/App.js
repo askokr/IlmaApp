@@ -52,15 +52,15 @@ class App extends Component {
           astronomyResponse = await astronomicalAPICall.json();
           const { sunrise, sunset } = astronomyResponse.results;
           this.setState({ sunrise, sunset });
-          this.setState({ response });
-          place = "";
-          this.setState({ place });
         } catch (e) {
           // console.log(e);
         }
       } catch (e) {
         // console.log(e);
       }
+      this.setState({ response });
+      place = "";
+      this.setState({ place });
       let searches = ++this.state.searches;
       this.setState({ searches });
     }
