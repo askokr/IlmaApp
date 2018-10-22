@@ -33,13 +33,13 @@ const WeatherDisplayMob = ({
           <div className="results-border">
             <span className="results results-city">{city}</span>
           </div>
-          <div>
+          <div className="results-border">
             <span className="results results-temperature">{tempString}</span>
           </div>
-          <div>
+          <div className="results-border">
             <span className="results results-wind">{windString}</span>
           </div>
-          <div>
+          <div className="results-border">
             <img className="results-image" src={imagelink} alt={text} />
           </div>
         </div>
