@@ -39,7 +39,7 @@ const WeatherDisplayMob = ({
           <div className="results-border">
             <span className="results results-wind">{windString}</span>
           </div>
-          <div className="results-border">
+          <div>
             <img className="results-image" src={imagelink} alt={text} />
           </div>
         </div>
