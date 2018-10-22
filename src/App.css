@@ -50,6 +50,7 @@
   }
   .results {
     color: navy;
+    border-right: lightskyblue 1px solid;
   }
   .results-city {
     font-size: 1.4em;
