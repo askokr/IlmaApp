@@ -31,7 +31,7 @@ const WeatherDisplayMob = ({
       <MediaQuery query="(orientation: landscape)">
         <div className="d-flex flex-row justify-content-center">
           <div>
-            <span className="results results-city">{city}:</span>
+            <span className="results results-city vertical">{city}</span>
           </div>
           <div>
             <span className="results results-temperature">{tempString}</span>
