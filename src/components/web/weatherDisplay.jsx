@@ -1,4 +1,5 @@
 import React from "react";
+import MediaQuery from "react-responsive";
 import YahooLink from "../yahooLink";
 
 const WeatherDisplayWeb = ({
@@ -11,8 +12,26 @@ const WeatherDisplayWeb = ({
 }) => {
   return (
     <React.Fragment>
-      <span className="results results-city">{city}:</span>
-      <div className="d-flex flex-row justify-content-center">
+      <MediaQuery query="(min-width: 800px)">
+        <span className="results results-city">{city}:</span>
+        <div className="d-flex flex-row justify-content-center">
+          <div className="flex-column d-flex justify-content-center">
+            <div>
+              <span className="results results-temperature">{tempString}</span>
+            </div>
+            <div>
+              <span className="results results-wind">{windString}</span>
+            </div>
+          </div>
+          <div>
+            <img src={imagelink} alt={text} />
+          </div>
+          <div />
+        </div>
+        <YahooLink link={weatherLink} />
+      </MediaQuery>
+      <MediaQuery query="(max-width: 800px)">
+        <span className="results results-city">{city}:</span>
         <div className="flex-column d-flex justify-content-center">
           <div>
             <span className="results results-temperature">{tempString}</span>
@@ -20,13 +39,13 @@ const WeatherDisplayWeb = ({
           <div>
             <span className="results results-wind">{windString}</span>
           </div>
-        </div>
-        <div>
-          <img src={imagelink} alt={text} />
+          <div>
+            <img src={imagelink} alt={text} />
+          </div>
         </div>
         <div />
-      </div>
-      <YahooLink link={weatherLink} />
+        <YahooLink link={weatherLink} />
+      </MediaQuery>
     </React.Fragment>
   );
 };
