@@ -41,6 +41,25 @@
   color: red;
   font-size: 2em;
 }
+@media only screen and (max-width: 800px) {
+  .search-container {
+    bottom: 450px;
+    margin-bottom: -450px;
+  }
+  .results {
+    color: navy;
+  }
+  .results-city {
+    margin-left: 2%;
+    font-size: 2em;
+  }
+  .results-temperature {
+    font-size: 3em;
+  }
+  .results-wind {
+    font-size: 1em;
+  }
+}
 
 /* cloudy background */
 * {
