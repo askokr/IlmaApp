@@ -70,7 +70,7 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment style={{ overflow: "hidden", width: "100%" }}>
+      <div style={{ overflow: "hidden", width: "100%" }}>
         <div>
           <header className="App-header">
             <h1>IlmaÄpp</h1>
@@ -100,7 +100,7 @@ class App extends Component {
           size="6.05em"
           ariaLabel="Check my code"
         />
-      </React.Fragment>
+      </div>
     );
   }
 }
