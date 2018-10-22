@@ -7,6 +7,9 @@ import YahooLink from "./yahooLink";
 import DirectionName from "./functions/directionName";
 
 class Weather extends Component {
+  shouldComponentUpdate(nextProps) {
+    return this.props.searches !== nextProps.searches;
+  }
   //compose elements for display
   composeElements = () => {
     const { response } = this.props;
@@ -31,7 +34,7 @@ class Weather extends Component {
         let today = new Date();
         const now = +today;
         const dd = today.getDate();
-        const mm = today.getMonth() + 1; //January is 0!
+        const mm = today.getMonth() + 1;
         const yyyy = today.getFullYear();
         today = yyyy + "/" + mm + "/" + dd;
         const sunriseTime = +new Date(
