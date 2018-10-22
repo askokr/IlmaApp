@@ -40,7 +40,7 @@ const WeatherDisplayMob = ({
             <span className="results results-wind">{windString}</span>
           </div>
           <div>
-            <img src={imagelink} alt={text} />
+            <img className="results-image" src={imagelink} alt={text} />
           </div>
         </div>
         <YahooLink link={weatherLink} />

@@ -59,6 +59,9 @@
   .results-wind {
     font-size: 1.2em;
   }
+  .results-image {
+    width: 10%;
+  }
 }
 
 /* cloudy background */
