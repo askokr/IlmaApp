@@ -19,12 +19,6 @@
   margin-bottom: -400px;
 }
 
-@media only screen and (max-width: 1224px) {
-  .search-container {
-    bottom: 600px;
-    margin-bottom: -600px;
-  }
-}
 .search-text {
   text-align: center;
 }
