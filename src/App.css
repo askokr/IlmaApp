@@ -45,12 +45,11 @@
 @media only screen and (max-width: 800px) {
   .search-container {
     text-align: center;
-    bottom: 450px;
-    margin-bottom: -450px;
+    bottom: 470px;
+    margin-bottom: -470px;
   }
   .results {
     color: navy;
-    border-right: lightskyblue 1px solid;
   }
   .results-city {
     font-size: 1.4em;
@@ -64,6 +63,9 @@
   .results-image {
     width: 50%;
   }
+}
+.results-border {
+  border-right: lightskyblue 1px solid;
 }
 
 /* cloudy background */
