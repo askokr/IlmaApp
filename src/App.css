@@ -65,6 +65,7 @@
   }
 }
 .results-border {
+  padding-right: 3px;
   border-right: lightskyblue 1px solid;
 }
 
