@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import MediaQuery from "react-responsive";
 import ErrorMessage from "./errorMessage";
+import DirectionName from "./functions/directionName";
 import WeatherDisplayMob from "./mob/weatherDisplay";
 import WeatherDisplayWeb from "./web/weatherDisplay";
 import YahooLink from "./yahooLink";
-import DirectionName from "./functions/directionName";
 
 class Weather extends Component {
   shouldComponentUpdate(nextProps) {
@@ -20,7 +20,7 @@ class Weather extends Component {
         const direction = parseInt(wind.direction);
         const speedMS = Math.round(parseInt(wind.speed) / 3.6);
         const directionName = DirectionName(direction);
-        const windString = directionName + " tuul, " + speedMS + " m/s.";
+        const windString = directionName + " tuul, " + speedMS + " m/s.";
 
         //make string of  temperature
         const { condition } = response.query.results.channel.item;

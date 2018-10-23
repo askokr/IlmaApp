@@ -15,22 +15,6 @@ class App extends Component {
     updateSwitch: false
   };
 
-  handlePlaceInput = e => {
-    const place = e.target.value;
-    this.setState({ place });
-  };
-
-  handleEnter = e => {
-    if (e.key === "Enter") {
-      this.handleAPICall();
-    }
-  };
-
-  handleNewLink = e => {
-    const link = e;
-    this.setState({ link });
-  };
-
   handleAPICall = async () => {
     let response, astronomyResponse;
     let place = this.state.place;
@@ -60,6 +44,22 @@ class App extends Component {
       place = "";
       this.setState({ place, response, updateSwitch });
     }
+  };
+
+  handleEnter = e => {
+    if (e.key === "Enter") {
+      this.handleAPICall();
+    }
+  };
+
+  handleNewLink = e => {
+    const link = e;
+    this.setState({ link });
+  };
+
+  handlePlaceInput = e => {
+    const place = e.target.value;
+    this.setState({ place });
   };
 
   render() {

@@ -4,11 +4,11 @@ import YahooLink from "../yahooLink";
 
 const WeatherDisplayMob = ({
   city,
+  imagelink,
   tempString,
   text,
-  windString,
-  imagelink,
-  weatherLink
+  weatherLink,
+  windString
 }) => {
   return (
     <React.Fragment>

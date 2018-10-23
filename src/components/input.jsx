@@ -18,7 +18,7 @@ class Input extends Component {
         <div>
           <DebounceInput
             minLength={1}
-            debounceTimeout={500}
+            debounceTimeout={300}
             id="input"
             onChange={onPlaceInput}
             onKeyPress={onEnter}
