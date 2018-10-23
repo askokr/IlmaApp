@@ -5,9 +5,7 @@ const WeatherDisplayMob = () => {
   return (
     <React.Fragment>
       <div className="d-flex flex-row justify-content-center">
-        <span className="results-error">
-          Miskit läks valesti, proovi uuesti!
-        </span>
+        <span className="results-error">Ei leia sellist kohta!</span>
         <div />
       </div>
       <YahooLink link="https://www.yahoo.com/?ilc=401" />

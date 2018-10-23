@@ -8,11 +8,11 @@ import DirectionName from "./functions/directionName";
 
 class Weather extends Component {
   shouldComponentUpdate(nextProps) {
-    return this.props.searches !== nextProps.searches;
+    return this.props.updateSwitch !== nextProps.updateSwitch;
   }
   //compose elements for display
   composeElements = () => {
-    const { response } = this.props;
+    const { response, sunrise, sunset } = this.props;
     if (response !== "") {
       try {
         //make string of wind result
@@ -30,17 +30,11 @@ class Weather extends Component {
         //get condition related image and text
         const { code, text } = condition;
         //is it day or night
-        let dayOrNight = "d";
-        let today = new Date();
-        const now = +today;
-        const dd = today.getDate();
-        const mm = today.getMonth() + 1;
-        const yyyy = today.getFullYear();
-        today = yyyy + "/" + mm + "/" + dd;
-        const sunriseTime = +new Date(
-          today + " " + this.props.sunrise + " UTC"
-        );
-        const sunsetTime = +new Date(today + " " + this.props.sunset + " UTC");
+        let dayOrNight;
+        const now = +new Date();
+        let sunriseTime = +new Date(sunrise);
+        let sunsetTime = +new Date(sunset);
+
         if (now <= sunsetTime && now >= sunriseTime) {
           dayOrNight = "d";
         } else {

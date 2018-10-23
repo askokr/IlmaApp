@@ -3,7 +3,7 @@ import { DebounceInput } from "react-debounce-input";
 
 class Input extends Component {
   shouldComponentUpdate(nextProps) {
-    const update = this.props.searches !== nextProps.searches;
+    const update = this.props.updateSwitch !== nextProps.updateSwitch;
     if (update) {
       let input = document.getElementById("input");
       input.value = "";
