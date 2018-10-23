@@ -64,13 +64,13 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%" }}>
+      <div style={{ width: "100%", height: "100%" }}>
         <div>
           <header className="App-header">
             <h1>IlmaÄpp</h1>
           </header>
         </div>
-        <div style={{ overflow: "hidden" }}>
+        <div>
           <Clouds />
           <div className="container search-container">
             <Input

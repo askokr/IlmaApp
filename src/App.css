@@ -17,6 +17,7 @@
   position: relative;
   bottom: 400px;
   margin-bottom: -400px;
+  overflow: hidden;
 }
 
 .search-text {
