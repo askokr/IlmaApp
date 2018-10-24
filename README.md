@@ -22,6 +22,15 @@ The app has an Estonian UI but searches can be made in any language.
 
 ## Built With
 
+Everything made with **ReactJS**
+
+### APIs
+
+- [Yahoo! Weather](https://www.yahoo.com/?ilc=401) - Weather data
+- [Sunrise-Sunset](https://sunrise-sunset.org/) - Astronomical data
+
+### Dependencies
+
 - [Bootstrap](https://www.npmjs.com/package/bootstrap/) - Appearance
 - [Jquery](https://www.npmjs.com/package/jquery) - Dependency of Bootstrap
 - [Propper.js](https://www.npmjs.com/package/propper.js) - Dependency of Bootstrap
@@ -30,11 +39,13 @@ The app has an Estonian UI but searches can be made in any language.
 - [React-Responsive](https://www.npmjs.com/package/react-responsive) - For the MediaQuery element
 - [Styled-Components](https://www.npmjs.com/package/styled-components) - Dependency of React-GH-Corner
 
+### CSS
+
 - [Clouds moving CSS animation](https://codepen.io/antonioescudero/pen/zrxGve) - Background animation
 
 ## Author
 
-© Asko Kriiska 2018
+Asko Kriiska 2018
 
 ## License
 
