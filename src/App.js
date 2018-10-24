@@ -64,7 +64,7 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{ width: "100%", height: "100%" }}>
+      <div className="mobileHider">
         <div>
           <header className="App-header">
             <h1>IlmaÄpp</h1>
