@@ -10,6 +10,30 @@
   color: white;
 }
 
+h1::selection {
+  background: #a8d1ff;
+  color: #282c34;
+}
+
+img::selection,
+span::selection {
+  background: #a8d1ff;
+}
+
+.btn,
+.search-text,
+span {
+  font-family: "Corben", cursive;
+}
+
+input::placeholder {
+  font-style: italic;
+}
+
+.btn {
+  font-weight: 700 !important;
+}
+
 .search-container {
   background-color: #f6f6f6;
   background-color: rgba(246, 246, 246, 0.6);

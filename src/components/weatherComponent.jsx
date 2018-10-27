@@ -20,12 +20,12 @@ class Weather extends Component {
         const direction = parseInt(wind.direction);
         const speedMS = Math.round(parseInt(wind.speed) / 3.6);
         const directionName = DirectionName(direction);
-        const windString = directionName + " tuul, " + speedMS + " m/s.";
+        const windString = directionName + " tuul, " + speedMS + "\u00a0m/s.";
 
         //make string of  temperature
         const { condition } = response.query.results.channel.item;
         const temp = condition.temp;
-        const tempString = temp + " °C";
+        const tempString = temp + "\u00a0°C";
 
         //get condition related image and text
         const { code, text } = condition;
