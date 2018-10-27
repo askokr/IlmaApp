@@ -93,8 +93,7 @@ input::placeholder {
   }
 }
 .results-border {
-  padding-right: 5px;
-  border-right: lightskyblue 1px solid;
+  margin-right: 8px;
 }
 
 /* cloudy background */
