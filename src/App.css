@@ -1,5 +1,4 @@
 .App-header {
-  font-family: "Ultra", serif;
   background-color: #282c34;
   min-height: 11vh;
   display: flex;
@@ -8,6 +7,12 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-header h1,
+.btn {
+  font-family: "Corben-Bold";
+  font-family: "Ultra", serif;
 }
 
 h1::selection {
@@ -20,18 +25,13 @@ span::selection {
   background: #a8d1ff;
 }
 
-.btn,
 .search-text,
 span {
-  font-family: "Corben", cursive;
+  font-family: "Corben";
 }
 
 input::placeholder {
   font-style: italic;
-}
-
-.btn {
-  font-weight: bold;
 }
 
 .search-container {
@@ -104,8 +104,8 @@ input::placeholder {
 }
 
 @font-face {
-  font-family: "Corben";
-  font-style: bold;
+  font-family: "Corben-Bold";
+  font-style: normal;
   font-weight: 700;
   src: url("./fonts/Corben-Bold.ttf") format("truetype");
 }
