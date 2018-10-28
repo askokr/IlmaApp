@@ -30,6 +30,10 @@ input::placeholder {
   font-style: italic;
 }
 
+.btn {
+  font-weight: bold;
+}
+
 .search-container {
   background-color: #f6f6f6;
   background-color: rgba(246, 246, 246, 0.6);
@@ -97,6 +101,13 @@ input::placeholder {
   font-style: normal;
   font-weight: 400;
   src: url("./fonts/Corben-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Corben";
+  font-style: bold;
+  font-weight: 700;
+  src: url("./fonts/Corben-Bold.ttf") format("truetype");
 }
 
 /* cloudy background */
