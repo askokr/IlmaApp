@@ -1,6 +1,6 @@
 # IlmaÄpp
 
-Find current weather by location. Built with ReactJS
+Find current weather by location. Built with ReactJS, Yahoo! weather API and Sunrise-Sunset astronomical API.
 
 ## How it works
 
