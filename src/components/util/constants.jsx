@@ -1,4 +1,19 @@
-function FindClosestDegrees(number) {
+export const DirectionName = degrees => {
+  const directionNames = [
+    "Põhja",
+    "Kirde",
+    "Ida",
+    "Kagu",
+    "Lõuna",
+    "Edela",
+    "Lääne",
+    "Loode"
+  ];
+  const directionName = directionNames[FindClosestDegrees(degrees)];
+  return directionName;
+};
+
+export const FindClosestDegrees = number => {
   const directionDegrees = [0, 45, 90, 135, 180, 225, 270, 315];
   let closest = number;
   let closestDegrees = 0;
@@ -12,6 +27,4 @@ function FindClosestDegrees(number) {
     }
   }
   return closestDegrees;
-}
-
-export default FindClosestDegrees;
+};

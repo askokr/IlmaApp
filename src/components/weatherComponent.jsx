@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MediaQuery from "react-responsive";
 import ErrorMessage from "./errorMessage";
-import DirectionName from "./functions/directionName";
+import { DirectionName } from "./util/constants";
 import WeatherDisplayMob from "./mob/weatherDisplay";
 import WeatherDisplayWeb from "./web/weatherDisplay";
 import YahooLink from "./yahooLink";
